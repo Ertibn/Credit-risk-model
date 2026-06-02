@@ -11,7 +11,7 @@ pytest==7.4.0
 pytest-cov==4.1.0
 flake8==6.0.0
 black==23.7.0
-xverse==2.0.1
+xverse==1.0.5
 jupyter==1.0.0
 ipython==8.14.0
 matplotlib==3.7.2
