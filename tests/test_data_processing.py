@@ -5,7 +5,13 @@ Unit tests for data processing module.
 import pytest
 import pandas as pd
 import numpy as np
+import sys
+from pathlib import Path
 from datetime import datetime, timedelta
+
+# Add the parent directory to the path so we can import src
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from src.data_processing import RFMCalculator, FeatureEngineer, CreditRiskPipeline
 from src.proxy_target import ProxyTargetCreator
 
