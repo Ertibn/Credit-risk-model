@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://localhost:5000
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./models:/app/models
+      - ./data/processed:/app/data/processed
+    networks:
+      - credit-risk-network
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    ports:
+      - "5000:5000"
+    command: mlflow server --host 0.0.0.0 --backend-store-uri sqlite:///mlflow.db
+    volumes:
+      - ./mlruns:/mlflow
+    networks:
+      - credit-risk-network
+
+networks:
+  credit-risk-network:
+    driver: bridge
