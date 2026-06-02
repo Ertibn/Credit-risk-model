@@ -33,14 +33,13 @@ app.add_middleware(
 
 # Global model state
 model = None
-scaler = None
 model_info = None
 
 
 @app.on_event("startup")
 async def load_model():
     """Load model from MLflow registry on startup."""
-    global model, scaler, model_info
+    global model, model_info
     
     try:
         logger.info("Loading model from MLflow...")
